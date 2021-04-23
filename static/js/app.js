@@ -3,14 +3,25 @@
 
 console.log("app.js loaded");
 
+function drawBargraph(sampleID) {
+    console.log(`Draw Bargraph for ${sampleID}`);
+}
 
-function InitDashboard() {
+function drawBubblechart(sampleID) {
+    console.log(`Draw Bubblechart for ${sampleID}`);
+}
+
+function showMetadata(sampleID) {
+    console.log(`Show the Metadata for ${sampleID}`);
+}
+
+function initDashboard() {
     console.log("InitDashboard()")
 
     // Populate the dropdown
     var selector = d3.select("#selDataset")
 
-    d3.json("samples.json").then(function(data) {
+    d3.json("samples.json").then(data => {
         console.log(data);
 
         var sampleNames = data.names
@@ -22,6 +33,12 @@ function InitDashboard() {
 
         }); 
 
+        var id = sampleNames[0]
+
+        drawBargraph(id);
+        drawBubblechart(id);
+        showMetadata(id);
+
     });
 
 
@@ -32,4 +49,4 @@ function InitDashboard() {
 
 }
 
-InitDashboard();
+initDashboard();

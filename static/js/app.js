@@ -13,6 +13,15 @@ function InitDashboard() {
     d3.json("samples.json").then(function(data) {
         console.log(data);
 
+        var sampleNames = data.names
+
+        sampleNames.forEach(sampleID => {
+            selector.append("option")
+            .text(sampleID)
+            .property("value", sampleID);
+
+        }); 
+
     });
 
 

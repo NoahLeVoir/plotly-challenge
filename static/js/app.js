@@ -3,6 +3,7 @@
 
 console.log("app.js loaded");
 
+// Functions to draw each graph per homework instructions
 function drawBargraph(sampleID) {
     console.log(`Draw Bargraph for ${sampleID}`);
 }
@@ -15,6 +16,17 @@ function showMetadata(sampleID) {
     console.log(`Show the Metadata for ${sampleID}`);
 }
 
+// Event change handler function
+function optionChanged(newsampleID) {
+    console.log(`User selected new sample ID ${newsampleID}`);
+
+    drawBargraph(newsampleID);
+    drawBubblechart(newsampleID);
+    showMetadata(newsampleID);
+
+}
+
+// Initializing the dashboard function
 function initDashboard() {
     console.log("InitDashboard()")
 

@@ -101,7 +101,6 @@ function showMetadata(sampleID) {
         // Get the metadata and store it into a result
         var metaData = data.metadata;
         var resultArray = metaData.filter(m => m.id == sampleID);
-        console.log(resultArray);
         var result = resultArray[0];
 
         // Append data to Demographic Info Table
@@ -119,6 +118,57 @@ function showMetadata(sampleID) {
 
 }
 
+
+// BONUS SECTION: GAUGE CHART
+function drawGaugechart(sampleID) {
+    console.log(`Show the Metadata for ${sampleID}`);
+
+    // Use d3 to read data from samples.json
+    d3.json("samples.json").then(data => {
+
+        // Get the metadata and store it into a result
+        var metaData = data.metadata;
+        var resultArray = metaData.filter(m => m.id == sampleID);
+        console.log(resultArray);
+        var result = resultArray[0];
+
+
+        // Gauge data
+        var data = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: result.wfreq,
+              title: { text: "Belly Button<br>Washes Per Week" },
+              type: "indicator",
+              mode: "gauge+number",
+            //   delta: { reference: 5 },
+              gauge: {
+                bar: {color: "black"},
+                axis: { range: [null, 9] },
+                steps: [
+                  { range: [0, 1], color: "lightgreen"},
+                  { range: [1, 2], color: "lightgreen"},
+                  { range: [2, 3], color: "lightblue" },
+                  { range: [3, 4], color: "lightblue" },
+                  { range: [4, 5], color: "royalblue" },
+                  { range: [5, 6], color: "royalblue" },
+                  { range: [6, 7], color: "blue" },
+                  { range: [7, 8], color: "blue" },
+                  { range: [8, 9], color: "darkblue" }
+                ],
+              }
+            }
+          ];
+          
+          var layout = { width: 500, height: 450, margin: { t: 0, b: 0 } };
+          
+        // Use plotly to draw the gauge chart
+          Plotly.newPlot('gauge', data, layout);
+
+    });
+
+}
+
 // Event change handler function
 function optionChanged(newsampleID) {
     console.log(`User selected new sample ID ${newsampleID}`);
@@ -128,6 +178,7 @@ function optionChanged(newsampleID) {
     drawBargraph(newsampleID);
     drawBubblechart(newsampleID);
     showMetadata(newsampleID);
+    drawGaugechart(newsampleID);
 
 }
 
@@ -158,6 +209,7 @@ function initDashboard() {
         drawBargraph(id);
         drawBubblechart(id);
         showMetadata(id);
+        drawGaugechart(id)
 
     });
 }

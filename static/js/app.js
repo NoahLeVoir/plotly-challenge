@@ -134,7 +134,7 @@ function drawGaugechart(sampleID) {
 
 
         // Gauge data
-        var data = [
+        var gaugeData = [
             {
               domain: { x: [0, 1], y: [0, 1] },
               value: result.wfreq,
@@ -143,7 +143,7 @@ function drawGaugechart(sampleID) {
               mode: "gauge+number",
             //   delta: { reference: 5 },
               gauge: {
-                bar: {color: "black"},
+                bar: {color: "red"},
                 axis: { range: [null, 9] },
                 steps: [
                   { range: [0, 1], color: "lightgreen"},
@@ -160,10 +160,10 @@ function drawGaugechart(sampleID) {
             }
           ];
           
-          var layout = { width: 500, height: 450, margin: { t: 0, b: 0 } };
+          var gaugeLayout = { width: 500, height: 450, margin: { t: 0, b: 0 } };
           
         // Use plotly to draw the gauge chart
-          Plotly.newPlot('gauge', data, layout);
+          Plotly.newPlot('gauge', gaugeData, gaugeLayout);
 
     });
 

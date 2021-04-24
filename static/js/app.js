@@ -86,6 +86,27 @@ function drawBubblechart(sampleID) {
 
 function showMetadata(sampleID) {
     console.log(`Show the Metadata for ${sampleID}`);
+
+    d3.json("samples.json").then(data => {
+        // console.log(data)
+
+        // Get the metadata and store it into a result
+        var metaData = data.metadata;
+        var resultArray = metaData.filter(m => m.id == sampleID);
+        console.log(resultArray);
+        var result = resultArray[0];
+
+        // Append data to Demographic Info Table
+        var demographicTable = d3.select("#sample-metadata");
+        // Use `.html("") to Clear any Existing Metadata
+        demographicTable.html("");
+        // Use `Object.entries` to Add Each Key & Value Pair to the Panel        
+        Object.entries(result).forEach(([key, value]) => {
+            demographicTable.append("h6").text(`${key}: ${value}`);
+          })
+
+    });
+
 }
 
 // Event change handler function

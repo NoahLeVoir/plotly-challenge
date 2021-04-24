@@ -1,11 +1,11 @@
 // Starting code comes from Office hour session with Instructor Dom
 // May share similarities with other students
 
-console.log("app.js loaded");
+// console.log("app.js loaded");
 
 // Functions to draw each graph per homework instructions
 function drawBargraph(sampleID) {
-    console.log(`Draw Bargraph for ${sampleID}`);
+    // console.log(`Draw Bargraph for ${sampleID}`);
 
     // Use d3 to read data from samples.json
     d3.json("samples.json").then(data => {
@@ -47,7 +47,7 @@ function drawBargraph(sampleID) {
 
 // Bubble chart function
 function drawBubblechart(sampleID) {
-    console.log(`Draw Bubblechart for ${sampleID}`);
+    // console.log(`Draw Bubblechart for ${sampleID}`);
 
     // Use d3 to read data from samples.json
     d3.json("samples.json").then(data => {
@@ -93,7 +93,7 @@ function drawBubblechart(sampleID) {
 
 // Demographic Info table function
 function showMetadata(sampleID) {
-    console.log(`Show the Metadata for ${sampleID}`);
+    // console.log(`Show the Metadata for ${sampleID}`);
 
     // Use d3 to read data from samples.json
     d3.json("samples.json").then(data => {
@@ -121,7 +121,7 @@ function showMetadata(sampleID) {
 
 // BONUS SECTION: GAUGE CHART
 function drawGaugechart(sampleID) {
-    console.log(`Show the Metadata for ${sampleID}`);
+    // console.log(`Show the Metadata for ${sampleID}`);
 
     // Use d3 to read data from samples.json
     d3.json("samples.json").then(data => {
@@ -129,7 +129,6 @@ function drawGaugechart(sampleID) {
         // Get the metadata and store it into a result
         var metaData = data.metadata;
         var resultArray = metaData.filter(m => m.id == sampleID);
-        console.log(resultArray);
         var result = resultArray[0];
 
 
@@ -160,6 +159,7 @@ function drawGaugechart(sampleID) {
             }
           ];
           
+        // Layout for the gauge chart
           var gaugeLayout = { width: 500, height: 450, margin: { t: 0, b: 0 } };
           
         // Use plotly to draw the gauge chart
@@ -171,7 +171,7 @@ function drawGaugechart(sampleID) {
 
 // Event change handler function
 function optionChanged(newsampleID) {
-    console.log(`User selected new sample ID ${newsampleID}`);
+    // console.log(`User selected new sample ID ${newsampleID}`);
 
     // Draw each graph when the value for newsampleID is changed
     // This will call all functions above to draw updated charts
@@ -185,7 +185,7 @@ function optionChanged(newsampleID) {
 // Initializing the dashboard function
 // This code comes from an office hours session with Instructor Dom
 function initDashboard() {
-    console.log("InitDashboard()")
+    // console.log("InitDashboard()")
 
     // Populate the dropdown
     var selector = d3.select("#selDataset")

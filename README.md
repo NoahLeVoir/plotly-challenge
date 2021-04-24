@@ -3,7 +3,7 @@ Homework 15 for UMN Data Visualization and Analytics bootcamp
 
 ## Noah LeVoir
 
-link to webpage submission: 
+link to webpage submission: https://noahlevoir.github.io/plotly-challenge/
 
 This repo contains the following:
 - An Images folder for this readme
